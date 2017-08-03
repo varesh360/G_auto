@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Locators>
+	<Header>
+		<LoginButton><![CDATA[//div[@id='globalnav']/ul/li[4]//a]]></LoginButton>
+	</Header>
+	<Login>
+		<UserName><![CDATA[//*[@id='loginForm:applicantUsername']]]></UserName>
+		<Password><![CDATA[//*[@id='loginForm:applicantPassword']]]></Password>
+		<SignIn><![CDATA[//*[@id='loginForm:applicantLoginButton']]]></SignIn>
+		<VerifyLogIn><![CDATA[//div[@id='status']//h3]]></VerifyLogIn>
+		<GetLoggedInUserName><![CDATA[//div[@id='status']//span]]></GetLoggedInUserName>
+		<GetLoggedInMenuTab><![CDATA[//*[@class='selected']]]></GetLoggedInMenuTab>
+		<Logoutbotton><![CDATA[//a[text()='Logout']]]></Logoutbotton>
+	</Login>
+</Locators>
