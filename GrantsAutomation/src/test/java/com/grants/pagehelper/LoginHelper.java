@@ -1,6 +1,7 @@
 package com.grants.pagehelper;
 
 import org.junit.Assert;
+import com.grants.locator.CreateTemplateLocators;
 import com.grants.locator.LoginLocators;
 import com.grants.util.DriverTestCase;
 
@@ -28,7 +29,7 @@ public class LoginHelper extends DriverTestCase {
 		sendKeys(LoginLocators.GrantorPassword, passWord);
 	}
 
-	// To click on the CreateTemplate button
+	// To click on the CreateTemplateLocators button
 	public void clickOnLoginButton() throws InterruptedException {
 
 		WaitForElementPresent(LoginLocators.GrantorLoginButon, 20);
@@ -38,50 +39,15 @@ public class LoginHelper extends DriverTestCase {
 	// To verify user is successfully login
 	public void verifyUserLoggedIn() throws InterruptedException {
 
-		WaitForElementPresent(LoginLocators.GrantorLoginButon, 20);
-		String str = getText(LoginLocators.welcomeUser);
+		WaitForElementPresent(CreateTemplateLocators.welcomeUser, 20);
+		String str = getText(CreateTemplateLocators.welcomeUser);
 		Assert.assertTrue(str.contains("WELCOME"));
 
 	}
 
 	// To verify that user is logged-in using Grantor credentials
 	public void verifyGrantorsTab() {
-		Assert.assertTrue("User in not on Grantor tab", isElementPresent(LoginLocators.GrantorTab));
+		Assert.assertTrue("User in not on Grantor tab", isElementPresent(CreateTemplateLocators.GrantorTab));
 	}
 
-	// To mouseover on Applicantes tab and verify it sub menues
-	public void hoverOnGrantorTab_ValidateManageApplicationTemplateLink() throws InterruptedException {
-
-		WaitForElementPresent(LoginLocators.GrantorTab, 20);
-		mouseOver(LoginLocators.GrantorTab);
-		Assert.assertTrue("Manage Application Template Link is not present ",
-				isElementPresent(LoginLocators.ManageApplicationPackageTemplate));
-	}
-
-	public void ClickOn_ManageApplicationPackageTemplate() {
-
-		WaitForElementPresent(LoginLocators.GrantorLoginButon, 20);
-		clickOn(LoginLocators.ManageApplicationPackageTemplate);
-	}
-
-	public void verifyManageApplicationPackageTemplatePage() {
-		
-		WaitForElementPresent(LoginLocators.GrantorLoginButon, 3);
-		Assert.assertTrue("User in not on Manage Application Package Template Page",
-				isElementPresent(LoginLocators.HeadingManageApplicationPackageTemplatePage));
-	}
-	public void Clickon_CreateNewTemplateButton()
-	{
-		WaitForElementPresent(LoginLocators.GrantorLoginButon, 3);
-		clickOn(LoginLocators.CreateNewTemplateButton);
-		
-	}
-	
-	public void selectFormFamily_ClikOn_nextButton()
-	{
-		WaitForElementPresent(LoginLocators.GrantorLoginButon, 3);
-		clickOn(LoginLocators.RRFormFamily);
-		clickOn(LoginLocators.CreateApplicationPackageTemplate_NextButton);
-		
-	}
 }

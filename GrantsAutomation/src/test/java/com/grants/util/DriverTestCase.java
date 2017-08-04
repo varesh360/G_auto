@@ -36,8 +36,9 @@ public abstract class DriverTestCase {
 	// Get username and password from property file
 	protected String username = propertyReader.readApplicationFile("GrantorUser");
 	protected String password = propertyReader.readApplicationFile("GrantorPassword");
+	protected String TName=propertyReader.readApplicationFile("TemplateName");
 
-			
+		
 	@BeforeTest
 	public void initateBrowserAndOpenApplication() {
 	
@@ -77,7 +78,7 @@ public abstract class DriverTestCase {
 		getWebDriver().navigate().to(url);
 
 		// Maximize window
-		 //getWebDriver().manage().window().maximize();
+		 getWebDriver().manage().window().maximize();
 		//getWebDriver().manage().window().setSize(new Dimension(1920, 1080));
 		// getWebDriver().manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
 
@@ -439,10 +440,27 @@ public abstract class DriverTestCase {
 		jse.executeScript("arguments[0].scrollIntoView();", element);
 	}
 		
-	public void waitforpageload(int timeout)
+	public void waitForPageload(int timeout)
 	{
 		getWebDriver().manage().timeouts().pageLoadTimeout(timeout, TimeUnit.SECONDS);
 	}
 	
+	// To Generate 4 digit random number
+	public int getRandomNumber()
+	{
+	Random rand = new Random();
+	int rNumber=rand.nextInt(10000);
+	return rNumber;
+	}
+
+	 public void waitForElementLoad(int x) {
+	  int num = x * 1000;
+	  try {
+	   Thread.sleep(num);
+	  } catch (InterruptedException e) {
+	   // TODO Auto-generated catch block
+	   e.printStackTrace();
+	  }
+	 }
 
 }

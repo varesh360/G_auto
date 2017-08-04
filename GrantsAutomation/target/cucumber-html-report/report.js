@@ -49,35 +49,35 @@ formatter.match({
   "location": "CreateTemplate.Open_Browser_and_start_application()"
 });
 formatter.result({
-  "duration": 11797794618,
+  "duration": 12517621452,
   "status": "passed"
 });
 formatter.match({
   "location": "CreateTemplate.click_on_login_link_button_and_then_click_on_grantor_account()"
 });
 formatter.result({
-  "duration": 5929172259,
+  "duration": 6638369703,
   "status": "passed"
 });
 formatter.match({
   "location": "CreateTemplate.enter_valid_username_and_valid_password_and_Click_on_login_button()"
 });
 formatter.result({
-  "duration": 1636708711,
+  "duration": 2223709944,
   "status": "passed"
 });
 formatter.match({
   "location": "CreateTemplate.verify_that_user_Loged_In_successfully_and_should_be_on_on_Grantor_section()"
 });
 formatter.result({
-  "duration": 175455834,
+  "duration": 83999097,
   "status": "passed"
 });
 formatter.match({
   "location": "CreateTemplate.hover_on_Grantor_tab_and_Validate_Manage_Application_Template_link()"
 });
 formatter.result({
-  "duration": 166761765,
+  "duration": 70727384,
   "status": "passed"
 });
 formatter.scenario({
@@ -152,52 +152,56 @@ formatter.match({
   "location": "CreateTemplate.click_on_Manage_Application_Package_Template_link()"
 });
 formatter.result({
-  "duration": 1386776543,
+  "duration": 4478327625,
   "status": "passed"
 });
 formatter.match({
   "location": "CreateTemplate.verify_that_user_is_on_MANAGE_APPLICATION_PACKAGE_TEMPLATES_page()"
 });
 formatter.result({
-  "duration": 30585035,
+  "duration": 29762350,
   "status": "passed"
 });
 formatter.match({
   "location": "CreateTemplate.click_Create_on_Create_New_Template_button()"
 });
 formatter.result({
-  "duration": 14857588,
-  "error_message": "java.lang.AssertionError: Element Locator ://button[@id\u003d\u0027form:cmCreate\u0027] Not found expected [true] but found [false]\r\n\tat org.testng.Assert.fail(Assert.java:93)\r\n\tat org.testng.Assert.failNotEquals(Assert.java:512)\r\n\tat org.testng.Assert.assertTrue(Assert.java:41)\r\n\tat com.grants.util.DriverTestCase.clickOn(DriverTestCase.java:275)\r\n\tat com.grants.pagehelper.LoginHelper.Clickon_CreateNewTemplateButton(LoginHelper.java:76)\r\n\tat com.grants.stepDefination.CreateTemplate.click_Create_on_Create_New_Template_button(CreateTemplate.java:67)\r\n\tat ✽.When Click Create on Create New Template button.(CreateTemplate.feature:19)\r\n",
-  "status": "failed"
+  "duration": 1436641166,
+  "status": "passed"
 });
 formatter.match({
   "location": "CreateTemplate.select_Form_Family_and_Click_Next_Button()"
 });
 formatter.result({
-  "status": "skipped"
+  "duration": 3922686637,
+  "status": "passed"
 });
 formatter.match({
   "location": "CreateTemplate.click_on_Add_Modify_template_form_then_Select_optional_forms_and_Click_on_Save_button()"
 });
 formatter.result({
-  "status": "skipped"
+  "duration": 3288340513,
+  "status": "passed"
 });
 formatter.match({
   "location": "CreateTemplate.enter_Template_name_and_Click_Save_button()"
 });
 formatter.result({
-  "status": "skipped"
+  "duration": 13571891852,
+  "status": "passed"
 });
 formatter.match({
   "location": "CreateTemplate.verify_that_User_is_able_to_create_and_appears_in_Application_package_template_result_table()"
 });
 formatter.result({
-  "status": "skipped"
+  "duration": 11117,
+  "status": "passed"
 });
 formatter.match({
   "location": "CreateTemplate.verify_that_Template_name_is_same_as_it_was_entered_in_the_template_name_text_field()"
 });
 formatter.result({
-  "status": "skipped"
+  "duration": 7813,
+  "status": "passed"
 });
 });
