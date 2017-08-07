@@ -14,6 +14,7 @@ public class LoginHelper extends DriverTestCase {
 		clickOn(LoginLocators.LoginLink);
 	}
 
+	// To select the type of account to login
 	public void clickonAccountType() throws InterruptedException {
 
 		WaitForElementPresent(LoginLocators.GrantorAccount, 20);
@@ -48,6 +49,16 @@ public class LoginHelper extends DriverTestCase {
 	// To verify that user is logged-in using Grantor credentials
 	public void verifyGrantorsTab() {
 		Assert.assertTrue("User in not on Grantor tab", isElementPresent(CreateTemplateLocators.GrantorTab));
+	}
+	
+	public void loginAndValidate(String userName, String passWord) throws InterruptedException
+	{
+		clickOnLoginLink();
+		clickonAccountType();
+		enterUserNamePassword(userName, passWord);
+		clickOnLoginButton();
+		verifyUserLoggedIn();
+		verifyGrantorsTab();
 	}
 
 }

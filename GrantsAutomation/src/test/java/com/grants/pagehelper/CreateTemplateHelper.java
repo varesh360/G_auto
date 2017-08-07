@@ -1,90 +1,47 @@
 package com.grants.pagehelper;
 
-import java.util.Random;
+import static org.testng.Assert.assertEquals;
 
 import org.junit.Assert;
-import org.python.modules.thread.thread;
-
 import com.grants.locator.CreateTemplateLocators;
-import com.grants.locator.LoginLocators;
-import com.grants.stepDefination.CreateTemplate;
 import com.grants.util.DriverTestCase;
 
 public class CreateTemplateHelper extends DriverTestCase {
-
-/*	// To click on login link button
-	public void clickOnLoginLink() throws InterruptedException {
-
-		WaitForElementPresent(LoginLocators.LoginLink, 20);
-		clickOn(LoginLocators.LoginLink);
-	}
-
-	public void clickonAccountType() throws InterruptedException {
-
-		WaitForElementPresent(LoginLocators.GrantorAccount, 20);
-		// getWebDriver().findElement(By.xpath(LoginLocators.GrantorAccount)).click();
-		clickOn(LoginLocators.GrantorAccount);
-	}
-
-	// To enter username and password
-	public void enterUserNamePassword(String userName, String passWord) throws InterruptedException {
-
-		WaitForElementPresent(LoginLocators.GrantorUserName, 20);
-		sendKeys(LoginLocators.GrantorUserName, userName);
-		sendKeys(LoginLocators.GrantorPassword, passWord);
-	}
-
-	// To click on the CreateTemplateLocators button
-	public void clickOnLoginButton() throws InterruptedException {
-
-		WaitForElementPresent(LoginLocators.GrantorLoginButon, 20);
-		clickOn(LoginLocators.GrantorLoginButon);
-	}
-
-	// To verify user is successfully login
-	public void verifyUserLoggedIn() throws InterruptedException {
-
-		WaitForElementPresent(CreateTemplateLocators.welcomeUser, 20);
-		String str = getText(CreateTemplateLocators.welcomeUser);
-		Assert.assertTrue(str.contains("WELCOME"));
-
-	}
-
-	// To verify that user is logged-in using Grantor credentials
-	public void verifyGrantorsTab() {
-		Assert.assertTrue("User in not on Grantor tab", isElementPresent(CreateTemplateLocators.GrantorTab));
-	}*/
-
 	
 	// To mouseover on Applicantes tab and verify it sub menues
 	public void hoverOnGrantorTabValidateManageApplicationTemplateLink() throws InterruptedException {
 
 		WaitForElementPresent(CreateTemplateLocators.GrantorTab, 20);
+		waitForPageload(2);
 		mouseOver(CreateTemplateLocators.GrantorTab);
-		WaitForElementPresent(CreateTemplateLocators.ManageApplicationPackageTemplate, 20);
-		Assert.assertTrue("Manage Application Template Link is not present ",
-				isElementPresent(CreateTemplateLocators.ManageApplicationPackageTemplate));
+		Assert.assertTrue("Manage Application Template Link is not present ",isElementPresent(CreateTemplateLocators.ManageApplicationPackageTemplate));
+		Thread.sleep(3000);
 	}
 
+	// To click on manage application package template link
 	public void clickOnManageApplicationPackageTemplateLink() throws InterruptedException {
 
 		WaitForElementPresent(CreateTemplateLocators.ManageApplicationPackageTemplate, 20);
-		Thread.sleep(3000);
+		waitForPageload(2);
 		clickOn(CreateTemplateLocators.ManageApplicationPackageTemplate);
+		Thread.sleep(3000);
 	}
 
+	// To validate manage application package template page
 	public void verifyManageApplicationPackageTemplatePage() {
 
-		WaitForElementPresent(CreateTemplateLocators.HeadingManageApplicationPackageTemplatePage, 20);
-		Assert.assertTrue("User in not on Manage Application Package Template Page",
-				isElementPresent(CreateTemplateLocators.HeadingManageApplicationPackageTemplatePage));
+		//WaitForElementPresent(CreateTemplateLocators.HeadingManageApplicationPackageTemplatePage, 20);
+		Assert.assertTrue("User in not on Manage Application Package Template Page",isElementPresent(CreateTemplateLocators.HeadingManageApplicationPackageTemplatePage));
 	}
 
+	// To clcik on cretae new template button
 	public void clickOnCreateNewTemplateButton() {
 		WaitForElementPresent(CreateTemplateLocators.CreateNewTemplateButton, 20);
 		clickOn(CreateTemplateLocators.CreateNewTemplateButton);
+		waitForElementLoad(2);
 	}
 
+	// To select form family and click on next button
 	public void selectFormFamilyAndClickOnNextBtn() {
 		WaitForElementPresent(CreateTemplateLocators.RRFormFamily, 20);
 		clickOn(CreateTemplateLocators.RRFormFamily);
@@ -93,6 +50,7 @@ public class CreateTemplateHelper extends DriverTestCase {
 
 	}
 	
+	// To click on add/modify template form button, selection form and then save
 	public void clickOnAddModifyTemplateFormButtonAndSelectOptionalFormSave() throws InterruptedException
 	{
 		WaitForElementPresent(CreateTemplateLocators.AddModifyTemplateForm_Button, 20);
@@ -109,22 +67,14 @@ public class CreateTemplateHelper extends DriverTestCase {
 	// To verify selected forms in the selected forms table
 	public void validateSelectedformsInTable() throws InterruptedException
 	{
-		//WaitForElementPresent(CreateTemplateLocators.AgenCyOwnerCode, 20);
-		//waitForPageload(8);
+		WaitForElementVisible(CreateTemplateLocators.AddModifyTemplateForm_Button, 20);
 		Thread.sleep(7000);
-		Assert.assertTrue("AgenCy Owner Code  is not present in select form table",
-				isElementPresent(CreateTemplateLocators.AgenCyOwnerCode));
-		Assert.assertTrue("Selected forms not present in select form table",
-				isElementPresent(CreateTemplateLocators.FormName));
-		Assert.assertTrue("ActiveGGVersion is not present in select form table",
-				isElementPresent(CreateTemplateLocators.ActiveGGVersion));
+		Assert.assertTrue("AgenCy Owner Code  is not present in select form table",isElementPresent(CreateTemplateLocators.AgenCyOwnerCode));
+		Assert.assertTrue("Selected forms not present in select form table",isElementPresent(CreateTemplateLocators.FormName));
+		Assert.assertTrue("ActiveGGVersion is not present in select form table",isElementPresent(CreateTemplateLocators.ActiveGGVersion));
 	}
 	
-	public void validateCreatedTemplate()
-	{
-		
-	}
-	
+	// To enter template name in textbox and click on save button.
 	public void enterTemplateNameClickSave() throws InterruptedException
 	{
 		
@@ -132,13 +82,40 @@ public class CreateTemplateHelper extends DriverTestCase {
 		System.out.println(numberRand);
 		String TemplateName=TName+numberRand;
 		System.out.println(TemplateName);
+		propertyHelper.writeProperty("TEMPLATENAME", TemplateName);
 		WaitForElementPresent(CreateTemplateLocators.TemplateName_TextBox, 20);
-		waitForElementLoad(3);
+		//waitForElementLoad(3);
 		sendKeys(CreateTemplateLocators.TemplateName_TextBox, TemplateName);
-		//waitForElementLoad(5);
-		WaitForElementEnabled(CreateTemplateLocators.CreateApplicationPackageTemplate_SaveButton, 20);
+		waitForElementLoad(3);
+		//WaitForElementEnabled(CreateTemplateLocators.CreateApplicationPackageTemplate_SaveButton, 20);
 		clickOn(CreateTemplateLocators.CreateApplicationPackageTemplate_SaveButton);
+		WaitForElementPresent("//div[contains(text(),'SAVING...']", 40);
 	}
 	
+	// to validate created template in the result table
+	public void validateCreatedTemplate()
+	{
+		String templateName=propertyHelper.readProperty("TEMPLATENAME");
+		try {
+			
+			WaitForElementPresent("//td[contains(.,'"+templateName+"')]", 40);
+			isElementPresent("//td[contains(.,'"+templateName+"')]");
+		}
+		catch(Exception e)
+		{
+			clickOn(CreateTemplateLocators.CreateApplicationPackageTemplate_SaveButton);
+			WaitForElementPresent("//div[contains(text(),'SAVING...']", 40);
+			Assert.assertTrue("Template is not peresent in the table",isElementPresent("//td[contains(.,'"+templateName+"')]"));
+		}
+			
+	}
 	
+	//to validate name of template in result table
+	public void verifyCreatedTemplateName()
+	{
+		String actualTemplateName=propertyHelper.readProperty("TEMPLATENAME");
+		String expectedTemplateName=getText("//td[contains(.,'"+actualTemplateName+"')]");
+		//org.testng.Assert.assertEquals(actualTemplateName, expectedTemplateName, "Template Name did not match.");
+		assertEquals(actualTemplateName, expectedTemplateName);
+	}
 }

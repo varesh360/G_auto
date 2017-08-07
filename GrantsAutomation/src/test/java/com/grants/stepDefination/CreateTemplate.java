@@ -90,11 +90,12 @@ public class CreateTemplate extends DriverTestCase {
 	@Then("^Verify that User is able to create and appears in Application package template result table$")
 	public void verify_that_User_is_able_to_create_and_appears_in_Application_package_template_result_table()
 			throws Throwable {
+		createTemplateHelper.validateCreatedTemplate();
 	}
 
 	@Then("^Verify that Template name is same as it was entered in the template name text field$")
 	public void verify_that_Template_name_is_same_as_it_was_entered_in_the_template_name_text_field() throws Throwable {
-
+      createTemplateHelper.verifyCreatedTemplateName();
 	}
 
 }

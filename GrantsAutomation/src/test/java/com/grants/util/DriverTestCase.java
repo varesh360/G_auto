@@ -8,6 +8,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -26,6 +27,7 @@ import org.testng.annotations.BeforeTest;
 public abstract class DriverTestCase {
 
 	protected static PropertyReader propertyReader= new PropertyReader();
+    protected static PropertyHelper propertyHelper=new PropertyHelper();
 	
 	static WebDriver driver;
 
@@ -78,7 +80,8 @@ public abstract class DriverTestCase {
 		getWebDriver().navigate().to(url);
 
 		// Maximize window
-		 getWebDriver().manage().window().maximize();
+		driver.manage().window().setSize(new Dimension(1920, 1080));
+		// getWebDriver().manage().window().maximize();
 		//getWebDriver().manage().window().setSize(new Dimension(1920, 1080));
 		// getWebDriver().manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
 
@@ -452,7 +455,8 @@ public abstract class DriverTestCase {
 	int rNumber=rand.nextInt(10000);
 	return rNumber;
 	}
-
+	
+	
 	 public void waitForElementLoad(int x) {
 	  int num = x * 1000;
 	  try {
