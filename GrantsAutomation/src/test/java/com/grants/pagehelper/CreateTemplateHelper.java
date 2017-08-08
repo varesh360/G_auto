@@ -79,9 +79,7 @@ public class CreateTemplateHelper extends DriverTestCase {
 	{
 		
 		int numberRand=getRandomNumber();	
-		System.out.println(numberRand);
 		String TemplateName=TName+numberRand;
-		System.out.println(TemplateName);
 		propertyHelper.writeProperty("TEMPLATENAME", TemplateName);
 		WaitForElementPresent(CreateTemplateLocators.TemplateName_TextBox, 20);
 		//waitForElementLoad(3);

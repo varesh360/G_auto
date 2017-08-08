@@ -1,6 +1,10 @@
 package com.grants.util;
 
 
+import static com.grants.util.DriverTestCase.driver;
+
+import java.io.FileOutputStream;
+import java.io.OutputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Random;
@@ -39,12 +43,16 @@ public abstract class DriverTestCase {
 	protected String username = propertyReader.readApplicationFile("GrantorUser");
 	protected String password = propertyReader.readApplicationFile("GrantorPassword");
 	protected String TName=propertyReader.readApplicationFile("TemplateName");
-
-		
+	protected String OppNumber=propertyReader.readApplicationFile("OpportunityNumber");
+	protected String OppTitle=propertyReader.readApplicationFile("OpportunityTitle");
+	protected String OppCategory=propertyReader.readApplicationFile("OpportunityCategory");
+	protected String OppExplanation=propertyReader.readApplicationFile("OpportunityCategoryExplanation");
+	protected String OppCFDANumber=propertyReader.readApplicationFile("CFDANumber");
+	
+	
 	@BeforeTest
 	public void initateBrowserAndOpenApplication() {
 	
-
 		String driverType = propertyReader.readApplicationFile("BROWSER");
 		System.out.println("the browser type is:" + driverType);
 
@@ -454,6 +462,13 @@ public abstract class DriverTestCase {
 	Random rand = new Random();
 	int rNumber=rand.nextInt(10000);
 	return rNumber;
+	}
+	
+	// To handle browse
+	public void browseAfile(String locator , String path)
+	{
+		WebElement el = getWebDriver().findElement(ByLocator(locator));
+		el.sendKeys(path);
 	}
 	
 	

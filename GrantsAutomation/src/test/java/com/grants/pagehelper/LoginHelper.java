@@ -51,6 +51,7 @@ public class LoginHelper extends DriverTestCase {
 		Assert.assertTrue("User in not on Grantor tab", isElementPresent(CreateTemplateLocators.GrantorTab));
 	}
 	
+	//Combined methods to perform login functionality
 	public void loginAndValidate(String userName, String passWord) throws InterruptedException
 	{
 		clickOnLoginLink();

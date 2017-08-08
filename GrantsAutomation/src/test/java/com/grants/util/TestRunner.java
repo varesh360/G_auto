@@ -11,7 +11,7 @@ import cucumber.api.junit.Cucumber;
 		glue={"com.grants.stepDefination"},
 		plugin= {"html:target/cucumber-html-report"				
 				},
-		tags= {"@CreateOppurtunity"}
+		tags= {"@CreateOppurtunity,@NewPackageCreation"}
 		)
 public class TestRunner {
 
