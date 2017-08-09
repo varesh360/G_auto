@@ -1,10 +1,11 @@
 package com.grants.util;
 
 
-import static com.grants.util.DriverTestCase.driver;
-
-import java.io.FileOutputStream;
-import java.io.OutputStream;
+import java.awt.AWTException;
+import java.awt.Robot;
+import java.awt.Toolkit;
+import java.awt.datatransfer.StringSelection;
+import java.awt.event.KeyEvent;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Random;
@@ -39,7 +40,7 @@ public abstract class DriverTestCase {
 		Firefox, IE, Chrome, Headless
 	}
 
-	// Get username and password from property file
+	// Get Values from property file
 	protected String username = propertyReader.readApplicationFile("GrantorUser");
 	protected String password = propertyReader.readApplicationFile("GrantorPassword");
 	protected String TName=propertyReader.readApplicationFile("TemplateName");
@@ -47,8 +48,20 @@ public abstract class DriverTestCase {
 	protected String OppTitle=propertyReader.readApplicationFile("OpportunityTitle");
 	protected String OppCategory=propertyReader.readApplicationFile("OpportunityCategory");
 	protected String OppExplanation=propertyReader.readApplicationFile("OpportunityCategoryExplanation");
-	protected String OppCFDANumber=propertyReader.readApplicationFile("CFDANumber");
+	protected String OppCFDANumber=propertyReader.readApplicationFile("OpportunityCFDANumber");
 	
+	protected String CFDA=propertyReader.readApplicationFile("CFDANumber");
+	protected String CompetitionID=propertyReader.readApplicationFile("CompetitionID");
+	protected String CompetitionTitle=propertyReader.readApplicationFile("CompetitionTitle");
+	protected String ElectronicRequired=propertyReader.readApplicationFile("ElectronicRequired");
+	protected String NoOFApplications=propertyReader.readApplicationFile("ExpectedNumberofApplications");
+	protected String ExpectedAppSize=propertyReader.readApplicationFile("ExpectedApplicationSize");
+	protected String OpenDate=propertyReader.readApplicationFile("OpenDate");
+	protected String CloseDate=propertyReader.readApplicationFile("CloseDate");
+	protected String GracePeriod=propertyReader.readApplicationFile("GracePeriod");
+	protected String AppInstructionsFilePath=propertyReader.readApplicationFile("ApplicationInstructions");
+	protected String ApplicantType=propertyReader.readApplicationFile("ApplicantType");
+		
 	
 	@BeforeTest
 	public void initateBrowserAndOpenApplication() {
@@ -465,10 +478,21 @@ public abstract class DriverTestCase {
 	}
 	
 	// To handle browse
-	public void browseAfile(String locator , String path)
+	public void browseAfile(String FilePath) throws AWTException, InterruptedException
 	{
-		WebElement el = getWebDriver().findElement(ByLocator(locator));
-		el.sendKeys(path);
+		String dirPath = System.getProperty("user.dir");
+		String pathToFile = dirPath+FilePath;
+		StringSelection ss = new StringSelection(pathToFile);
+		Toolkit.getDefaultToolkit().getSystemClipboard().setContents(ss, null);
+		waitForElementLoad(5);
+		Robot robot = new Robot();
+
+		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_V);
+		robot.keyRelease(KeyEvent.VK_V);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_ENTER);
+		robot.keyRelease(KeyEvent.VK_ENTER);
 	}
 	
 	

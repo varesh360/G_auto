@@ -63,37 +63,44 @@ public class CreateOpportunity extends DriverTestCase {
 
 	@Then("^Click on Select Package Template under Form Package$")
 	public void click_on_Select_Package_Template_under_Form_Package() throws Throwable {
-	   
+		
+		createOpportunityHelper.clickOnSelectPackageTemplateButton();
 	}
 
 	@Then("^Enter Template Name and click search button$")
 	public void enter_Template_Name_and_click_search_button() throws Throwable {
-	   
+		
+		createOpportunityHelper.enterTemplateNameAndSearch();
 	}
 
 	@Then("^Select template from search result table$")
 	public void select_template_from_search_result_table() throws Throwable {
-	   
+		
+		createOpportunityHelper.selectTemplateFromSearchResultTable();
 	}
 
 	@Then("^Click Save button and Click on publish button$")
 	public void click_Save_button_and_Click_on_publish_button() throws Throwable {
-	  
+		
+		createOpportunityHelper.clickSaveAndPublishButton();
 	}
 
 	@Then("^Verify that User is on PACKAGE PUBLICATION VERIFICATION page$")
 	public void verify_that_User_is_on_PACKAGE_PUBLICATION_VERIFICATION_page() throws Throwable {
-	    
+		
+		createOpportunityHelper.validatePackagePublicationVerificationPage();
 	}
 
 	@Then("^Validte Opportunity Number, Title, CFDA Number, CFDA Title, Competition ID, Competition Title$")
 	public void validte_Opportunity_Number_Title_CFDA_Number_CFDA_Title_Competition_ID_Competition_Title() throws Throwable {
-	    
+		
+		createOpportunityHelper.validteOpportunityNumberTitleCFDANumberCFDATitleCompetitionIDCompetitionTitle();
 	}
 
 	@Then("^Validate Electronic Required, Expected Number of Applications, Application Size, Open Date, Close Date$")
 	public void validate_Electronic_Required_Expected_Number_of_Applications_Application_Size_Open_Date_Close_Date() throws Throwable {
 	  
+		createOpportunityHelper.validateElectronicRequiredExpectedNumberofApplicationsApplicationSizeOpenDateCloseDate();
 	}
 
 	@Then("^Validate Grace Period, Agency Contact, Application Instructions, Available to$")
