@@ -12,17 +12,16 @@ public class CreateTemplateHelper extends DriverTestCase {
 	public void hoverOnGrantorTabValidateManageApplicationTemplateLink() throws InterruptedException {
 
 		WaitForElementPresent(CreateTemplateLocators.GrantorTab, 20);
-		waitForPageload(2);
+		waitForElementLoad(2);
 		mouseOver(CreateTemplateLocators.GrantorTab);
 		Assert.assertTrue("Manage Application Template Link is not present ",isElementPresent(CreateTemplateLocators.ManageApplicationPackageTemplate));
-		Thread.sleep(3000);
 	}
 
 	// To click on manage application package template link
 	public void clickOnManageApplicationPackageTemplateLink() throws InterruptedException {
 
-		WaitForElementPresent(CreateTemplateLocators.ManageApplicationPackageTemplate, 20);
-		waitForPageload(2);
+		waitForElementLoad(2);
+		WaitForElementVisible(CreateTemplateLocators.ManageApplicationPackageTemplate, 20);
 		clickOn(CreateTemplateLocators.ManageApplicationPackageTemplate);
 		Thread.sleep(3000);
 	}
@@ -36,7 +35,8 @@ public class CreateTemplateHelper extends DriverTestCase {
 
 	// To clcik on cretae new template button
 	public void clickOnCreateNewTemplateButton() {
-		WaitForElementPresent(CreateTemplateLocators.CreateNewTemplateButton, 20);
+		waitForElementLoad(2);
+		WaitForElementVisible(CreateTemplateLocators.CreateNewTemplateButton, 20);
 		clickOn(CreateTemplateLocators.CreateNewTemplateButton);
 		waitForElementLoad(2);
 	}
@@ -45,6 +45,7 @@ public class CreateTemplateHelper extends DriverTestCase {
 	public void selectFormFamilyAndClickOnNextBtn() {
 		WaitForElementPresent(CreateTemplateLocators.RRFormFamily, 20);
 		clickOn(CreateTemplateLocators.RRFormFamily);
+		waitForElementLoad(2);
 		WaitForElementEnabled(CreateTemplateLocators.CreateApplicationPackageTemplate_NextButton, 20);
 		clickOn(CreateTemplateLocators.CreateApplicationPackageTemplate_NextButton);
 
@@ -53,13 +54,11 @@ public class CreateTemplateHelper extends DriverTestCase {
 	// To click on add/modify template form button, selection form and then save
 	public void clickOnAddModifyTemplateFormButtonAndSelectOptionalFormSave() throws InterruptedException
 	{
-		WaitForElementPresent(CreateTemplateLocators.AddModifyTemplateForm_Button, 20);
+		WaitForElementVisible(CreateTemplateLocators.AddModifyTemplateForm_Button, 20);
 		clickOn(CreateTemplateLocators.AddModifyTemplateForm_Button);
-		
-		Thread.sleep(3000);
-		WaitForElementPresent(CreateTemplateLocators.AFRIProjectTypr_RadioButton, 20);
+		waitForElementLoad(2);
+		WaitForElementVisible(CreateTemplateLocators.AFRIProjectTypr_RadioButton, 20);
 		clickOn(CreateTemplateLocators.AFRIProjectTypr_RadioButton);
-		
 		WaitForElementPresent(CreateTemplateLocators.SelectForm_SaveButton, 20);
 		clickOn(CreateTemplateLocators.SelectForm_SaveButton);
 	}
@@ -80,20 +79,23 @@ public class CreateTemplateHelper extends DriverTestCase {
 		
 		int numberRand=getRandomNumber();	
 		String TemplateName=TName+numberRand;
-		propertyHelper.writeProperty("TEMPLATENAME", TemplateName);
+		//propertyHelper.writeProperty("TEMPLATENAME", TemplateName);
+		propertyReader.writeProperty("TEMPLATENAME", TemplateName);
 		WaitForElementPresent(CreateTemplateLocators.TemplateName_TextBox, 20);
 		//waitForElementLoad(3);
 		sendKeys(CreateTemplateLocators.TemplateName_TextBox, TemplateName);
 		waitForElementLoad(3);
 		//WaitForElementEnabled(CreateTemplateLocators.CreateApplicationPackageTemplate_SaveButton, 20);
 		clickOn(CreateTemplateLocators.CreateApplicationPackageTemplate_SaveButton);
-		WaitForElementPresent("//div[contains(text(),'SAVING...']", 40);
+		WaitForElementVisible("//div[contains(text(),'SAVING...']", 40);
+		//waitForElementLoad(28);
 	}
 	
 	// to validate created template in the result table
 	public void validateCreatedTemplate()
 	{
-		String templateName=propertyHelper.readProperty("TEMPLATENAME");
+		//String templateName=propertyHelper.readProperty("TEMPLATENAME");
+		String templateName=propertyReader.readProperty("TEMPLATENAME");
 		try {
 			
 			WaitForElementPresent("//td[contains(.,'"+templateName+"')]", 40);
@@ -111,7 +113,8 @@ public class CreateTemplateHelper extends DriverTestCase {
 	//to validate name of template in result table
 	public void verifyCreatedTemplateName()
 	{
-		String actualTemplateName=propertyHelper.readProperty("TEMPLATENAME");
+		String actualTemplateName=propertyReader.readProperty("TEMPLATENAME");
+		//String actualTemplateName=propertyHelper.readProperty("TEMPLATENAME");
 		String expectedTemplateName=getText("//td[contains(.,'"+actualTemplateName+"')]");
 		//org.testng.Assert.assertEquals(actualTemplateName, expectedTemplateName, "Template Name did not match.");
 		assertEquals(actualTemplateName, expectedTemplateName);

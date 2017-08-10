@@ -32,7 +32,7 @@ import org.testng.annotations.BeforeTest;
 public abstract class DriverTestCase {
 
 	protected static PropertyReader propertyReader= new PropertyReader();
-    protected static PropertyHelper propertyHelper=new PropertyHelper();
+    //protected static PropertyHelper propertyHelper=new PropertyHelper();
 	
 	static WebDriver driver;
 
@@ -101,8 +101,8 @@ public abstract class DriverTestCase {
 		getWebDriver().navigate().to(url);
 
 		// Maximize window
-		driver.manage().window().setSize(new Dimension(1920, 1080));
-		// getWebDriver().manage().window().maximize();
+		//driver.manage().window().setSize(new Dimension(1920, 1080));
+		 getWebDriver().manage().window().maximize();
 		//getWebDriver().manage().window().setSize(new Dimension(1920, 1080));
 		// getWebDriver().manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
 

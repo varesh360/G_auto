@@ -15,8 +15,8 @@ public class CreateOpportunity extends DriverTestCase {
 
 	@Given("^Login and Navigate to Grantors Tab$")
 	public void Login_and_navigate_to_Grantors_Tab() throws Throwable {
-		initateBrowserAndOpenApplication();
-		loginHelper.loginAndValidate(username, password);
+		//initateBrowserAndOpenApplication();
+		//loginHelper.loginAndValidate(username, password);
 		createOpportunityHelper.navigateToGrantsTabAndVerifyCreateOpportunityLink();
 	}
 

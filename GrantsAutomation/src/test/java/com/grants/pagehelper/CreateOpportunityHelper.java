@@ -14,38 +14,35 @@ public class CreateOpportunityHelper extends DriverTestCase {
 		WaitForElementPresent(CreateTemplateLocators.GrantorTab, 20);
 		mouseOver(CreateTemplateLocators.GrantorTab);
 		waitForElementLoad(4);
-		Assert.assertTrue("Manage Opportunities Link is not present ",
-				isElementPresent(CreateOpportunityLocators.ManageOpportunitiesLink));
+		Assert.assertTrue("Manage Opportunities Link is not present ",isElementPresent(CreateOpportunityLocators.ManageOpportunitiesLink));
 	}
 
 	// To click on Manage opportunity link
 	public void clickOnManageOpportunitiesLink() {
-		WaitForElementPresent(CreateOpportunityLocators.ManageOpportunitiesLink, 20);
 		clickOn(CreateOpportunityLocators.ManageOpportunitiesLink);
 	}
 
 	// To Validate opportunity page
 	public void validateManageOpportunitiesPage() {
-		WaitForElementPresent(CreateOpportunityLocators.HeadingManageOpportunities, 20);
-		Assert.assertTrue("Manage Opportunities page does not exist ",
-				isElementPresent(CreateOpportunityLocators.HeadingManageOpportunities));
+		WaitForElementVisible(CreateOpportunityLocators.HeadingManageOpportunities, 20);
+		Assert.assertTrue("Manage Opportunities page does not exist ",isElementPresent(CreateOpportunityLocators.HeadingManageOpportunities));
 	}
 	
 	// To click on Create New opportunity button
 		public void clickOnCreateNewOpportunityButton() {
-			WaitForElementPresent(CreateOpportunityLocators.CreateNewOpportunity_Button, 20);
+			WaitForElementVisible(CreateOpportunityLocators.CreateNewOpportunity_Button, 20);
 			clickOn(CreateOpportunityLocators.CreateNewOpportunity_Button);
 		}
 
 		//To enter the detail for creating new opportunity
 		public void enterOpportunityNumberTitleCategoryCategoryExplanationCFDANumber() throws InterruptedException
 		{
-			WaitForElementPresent(CreateOpportunityLocators.HeadingCreateOpportunity_Page, 20);
+			WaitForElementVisible(CreateOpportunityLocators.HeadingCreateOpportunity_Page, 20);
 			Assert.assertTrue("Create Opportunities page does not exist ",isElementPresent(CreateOpportunityLocators.HeadingCreateOpportunity_Page));
 			int numberRand=getRandomNumber();	
 			String OpportunityNumber=OppNumber+numberRand;
 			String OpportunityTitle=OpportunityNumber;
-			propertyHelper.writeProperty("OPPORTUNITYNUMBER", OpportunityNumber);
+			propertyReader.writeProperty("OPPORTUNITYNUMBER", OpportunityNumber);
 			WaitForElementPresent(CreateOpportunityLocators.DetailsOpportunityNumber, 20);
 			waitForElementLoad(2);
 			sendKeys(CreateOpportunityLocators.DetailsOpportunityNumber, OpportunityNumber);
@@ -99,7 +96,8 @@ public class CreateOpportunityHelper extends DriverTestCase {
 		// To search the existing template
 		public void enterTemplateNameAndSearch()
 		{
-			String TemplateName=propertyHelper.readProperty("TEMPLATENAME");
+			//String TemplateName=propertyHelper.readProperty("TEMPLATENAME");
+			String TemplateName=propertyReader.readProperty("TEMPLATENAME");
 			System.out.println(TemplateName);
 			waitForElementLoad(3);
 			WaitForElementPresent(CreateOpportunityLocators.TemplateName_SearchTextBox, 20);
@@ -136,7 +134,8 @@ public class CreateOpportunityHelper extends DriverTestCase {
 		// To validate_Opportunity_Number_Title_CFDA_Number_CFDA_Title_Competition_ID_Competition_Title
 		public void validteOpportunityNumberTitleCFDANumberCFDATitleCompetitionIDCompetitionTitle()
 		{
-			String OPPNUMBER=propertyHelper.readProperty("OPPORTUNITYNUMBER");
+			//String OPPNUMBER=propertyHelper.readProperty("OPPORTUNITYNUMBER");
+			String OPPNUMBER=propertyReader.readProperty("OPPORTUNITYNUMBER");
 			waitForElementLoad(4);
 			Assert.assertTrue("Opportunity number did not match",
 					isElementPresent("//span[contains(.,'"+OPPNUMBER+"')]"));
@@ -201,8 +200,8 @@ public class CreateOpportunityHelper extends DriverTestCase {
 		public void verifyThatUserisonPACKAGEPUBLICATIONSUCCESSpageabletopublishpackagesuccessfullywiththemessage()
 		{
 			waitForElementLoad(3);
-			Assert.assertTrue("Package Publication Success Page does not exist",
-					isElementPresent(CreateOpportunityLocators.HeadingPackagePublicationSuccess_Page));
+			Assert.assertTrue("Package Publication Success Page does not exist",isElementPresent(CreateOpportunityLocators.HeadingPackagePublicationSuccess_Page));
+			Assert.assertTrue(isElementPresent("//span[contains(.,'Congratulations, your application package')]"));
 			
 		}
 		
@@ -217,7 +216,9 @@ public class CreateOpportunityHelper extends DriverTestCase {
 		public void validateManageOpportunityPageandValidateOpportunityNumber()
 		{
 			waitForElementLoad(2);
-			Assert.assertTrue("Manage Opportunity Page does not exist",
-					isElementPresent(CreateOpportunityLocators.HeadingManageOpportunity_Page));
+			String oppNo= propertyReader.readProperty("OPPORTUNITYNUMBER");	
+			Assert.assertTrue("Manage Opportunity Page does not exist",isElementPresent(CreateOpportunityLocators.HeadingManageOpportunity_Page));
+			Assert.assertTrue("Your package is not successfully success",isElementPresent("//span[@id='form:opportunityInfo']//span[contains(.,'"+oppNo+"')]"));
+			
 		}
 }

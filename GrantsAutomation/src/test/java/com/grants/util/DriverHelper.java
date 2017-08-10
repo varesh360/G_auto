@@ -19,8 +19,6 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.sikuli.script.Match;
-import org.sikuli.script.Screen;
 import org.testng.Assert;
 
 public abstract class DriverHelper{
@@ -382,23 +380,7 @@ public abstract class DriverHelper{
 		JavascriptExecutor jse = (JavascriptExecutor)driver;
 		jse.executeScript("arguments[0].scrollIntoView();", element);
 	}
-	
-	public void verifyImage(String imagePath)
-	{
-		System.out.println("Code Entered to verify Profile Pic");
-		Screen screen = new Screen();
-		System.out.println(imagePath);
-		Match img1=screen.exists(imagePath);
-		if(img1!=null)
-		{
-			System.out.println("Image Exist on Screen");
-		}
-		else
-		{
-			System.out.println("Image Does not Exist on Screen");
-		}
-	}
-	
+		
 	public static void uploadFile(String fileLocation) {
 		try {
 
