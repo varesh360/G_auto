@@ -1,5 +1,6 @@
 package com.grants.stepDefination;
 
+
 import com.grants.pagehelper.CreateOpportunityHelper;
 import com.grants.pagehelper.LoginHelper;
 import com.grants.util.DriverTestCase;
@@ -106,26 +107,31 @@ public class CreateOpportunity extends DriverTestCase {
 	@Then("^Validate Grace Period, Agency Contact, Application Instructions, Available to$")
 	public void validate_Grace_Period_Agency_Contact_Application_Instructions_Available_to() throws Throwable {
 	    
+		createOpportunityHelper.validateGracePeriodAgencyContactApplicationInstructionsAvailableto();
 	}
 
 	@Then("^Again Click on publish button to confirm$")
 	public void again_Click_on_publish_button_to_confirm() throws Throwable {
-	   
+		
+		createOpportunityHelper.clickonpublishbuttontoconfirm();
 	}
 
 	@Then("^Verify That User is on PACKAGE PUBLICATION SUCCESS page able to publish package successfully with the message$")
 	public void verify_That_User_is_on_PACKAGE_PUBLICATION_SUCCESS_page_able_to_publish_package_successfully_with_the_message() throws Throwable {
-	    
+		
+		createOpportunityHelper.verifyThatUserisonPACKAGEPUBLICATIONSUCCESSpageabletopublishpackagesuccessfullywiththemessage();
 	}
 
 	@Then("^Click on Continue button$")
 	public void click_on_Continue_button() throws Throwable {
 	    
+		createOpportunityHelper.clickOnContinueButton();
 	}
 
 	@Then("^Verify that User is on MANAGE OPPORTUNITY page and validate opportunity number$")
 	public void verify_that_User_is_on_MANAGE_OPPORTUNITY_page_and_validate_opportunity_number() throws Throwable {
 	    
+		createOpportunityHelper.validateManageOpportunityPageandValidateOpportunityNumber();
 	}
 
 }

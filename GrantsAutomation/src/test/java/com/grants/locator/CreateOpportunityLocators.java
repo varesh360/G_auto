@@ -50,7 +50,15 @@ public class CreateOpportunityLocators {
 	public final static String PackagePublicationVerificationPage_OpenDate = "//span[@id='verifyPackageBeanForm:openDate']";
 	public final static String PackagePublicationVerificationPage_CloseDate = "//span[@id='verifyPackageBeanForm:closeDate']";
 	public final static String PackagePublicationVerificationPage_GracePeriod = "//span[@id='verifyPackageBeanForm:gracePeriod']";
-	public final static String PackagePublicationVerificationPage_AvilableTo = "//span[contains(.,'Organizations Only')]";
+	public final static String PackagePublicationVerificationPage_AvilableTo = "//form[@id='verifyPackageBeanForm']//table[3]//tbody//tr[15]//td[2]";//"//span[contains(.,'Organizations Only')]";
+	public final static String PackagePublicationVerificationPage_ConfirmPublishButton = "//input[@id='verifyPackageBeanForm:submitButton']";
+	public final static String HeadingPackagePublicationSuccess_Page = "//h1[@class='page-title']";
+	public final static String PackagePublicationSuccess_ContinueButton = "//input[@name='updatePackageSuccessForm:j_idt31']";
+	public final static String HeadingManageOpportunity_Page = "//h1[@class='page-title noPrintBlock']";
+	
+	
+	
+	
 	
 	
 	

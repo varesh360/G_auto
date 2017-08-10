@@ -158,7 +158,7 @@ public class CreateOpportunityHelper extends DriverTestCase {
 		// To validate_Electronic_Required_Expected_Number_of_Applications_Application_Size_Open_Date_Close_Date
 		public void validateElectronicRequiredExpectedNumberofApplicationsApplicationSizeOpenDateCloseDate()
 		{
-			if((CreateOpportunityLocators.PackagePublicationVerificationPage_ElectronicRrequired).contains(ElectronicRequired))
+			if( getText(CreateOpportunityLocators.PackagePublicationVerificationPage_ElectronicRrequired).contains(ElectronicRequired))
 			{
 				System.out.println("ElectronicRequired ID Match");
 			}
@@ -169,5 +169,55 @@ public class CreateOpportunityHelper extends DriverTestCase {
 			Assert.assertEquals("Assert Verification", ExpectedAppSize, getText(CreateOpportunityLocators.PackagePublicationVerificationPage_ExpectedAppSize));
 			Assert.assertEquals("Assert Verification", OpenDate, getText(CreateOpportunityLocators.PackagePublicationVerificationPage_OpenDate));
 			Assert.assertEquals("Assert Verification", CloseDate, getText(CreateOpportunityLocators.PackagePublicationVerificationPage_CloseDate));
+		}
+		
+		// To Validate Grace_Period_Agency_Contact_Application_Instructions_Available_to
+		public void validateGracePeriodAgencyContactApplicationInstructionsAvailableto()
+		{
+			if((getText(CreateOpportunityLocators.PackagePublicationVerificationPage_GracePeriod).contains(GracePeriod)))
+			{
+				System.out.println("Grace Period Match");
+			}
+			else {
+				throw new AssertionError();
+			}
+			/*if( (ApplicantType).contains(getText(CreateOpportunityLocators.PackagePublicationVerificationPage_AvilableTo)))
+			{
+				System.out.println("Avilable To Match");
+			}
+			else {
+				throw new AssertionError();
+			}*/
+		}
+		
+		// To again_Click_on_publish_button_to_confirm()
+		public void clickonpublishbuttontoconfirm()
+		{
+			WaitForElementPresent(CreateOpportunityLocators.PackagePublicationVerificationPage_ConfirmPublishButton, 20);
+			clickOn(CreateOpportunityLocators.PackagePublicationVerificationPage_ConfirmPublishButton);
+		}
+		
+		//To verify_That_User_is_on_PACKAGE_PUBLICATION_SUCCESS_page_able_to_publish_package_successfully_with_the_message
+		public void verifyThatUserisonPACKAGEPUBLICATIONSUCCESSpageabletopublishpackagesuccessfullywiththemessage()
+		{
+			waitForElementLoad(3);
+			Assert.assertTrue("Package Publication Success Page does not exist",
+					isElementPresent(CreateOpportunityLocators.HeadingPackagePublicationSuccess_Page));
+			
+		}
+		
+		// To click_on_Continue_button
+		public void clickOnContinueButton()
+		{
+			WaitForElementPresent(CreateOpportunityLocators.PackagePublicationSuccess_ContinueButton, 20);
+			clickOn(CreateOpportunityLocators.PackagePublicationSuccess_ContinueButton);
+		}
+		
+		//To verify_that_User_is_on_MANAGE_OPPORTUNITY_page_and_validate_opportunity_number
+		public void validateManageOpportunityPageandValidateOpportunityNumber()
+		{
+			waitForElementLoad(2);
+			Assert.assertTrue("Manage Opportunity Page does not exist",
+					isElementPresent(CreateOpportunityLocators.HeadingManageOpportunity_Page));
 		}
 }
