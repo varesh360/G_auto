@@ -13,7 +13,6 @@ import java.util.concurrent.TimeUnit;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Dimension;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -32,7 +31,6 @@ import org.testng.annotations.BeforeTest;
 public abstract class DriverTestCase {
 
 	protected static PropertyReader propertyReader= new PropertyReader();
-    //protected static PropertyHelper propertyHelper=new PropertyHelper();
 	
 	static WebDriver driver;
 
@@ -64,10 +62,10 @@ public abstract class DriverTestCase {
 		
 	
 	@BeforeTest
-	public void initateBrowserAndOpenApplication() {
+	public void initateBrowserAndOpenApplication() {		
 	
 		String driverType = propertyReader.readApplicationFile("BROWSER");
-		System.out.println("the browser type is:" + driverType);
+		System.out.println("Selected browser is:" + driverType);
 
 		if (DriverType.Firefox.toString().equals(driverType)) {
 			String strDriverPath = System.getProperty("user.dir") + "\\webdriverexe\\geckodriver.exe";
@@ -494,8 +492,7 @@ public abstract class DriverTestCase {
 		robot.keyPress(KeyEvent.VK_ENTER);
 		robot.keyRelease(KeyEvent.VK_ENTER);
 	}
-	
-	
+
 	 public void waitForElementLoad(int x) {
 	  int num = x * 1000;
 	  try {

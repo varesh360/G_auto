@@ -14,5 +14,4 @@ public class LoginLocators {
 	public final static String GrantorPassword = "loginForm:agencyPassword";
 	public final static String GrantorLoginButon = "loginForm:agencyLoginButton";
 	
-	
 }

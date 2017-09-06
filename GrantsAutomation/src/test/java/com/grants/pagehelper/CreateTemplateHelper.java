@@ -79,13 +79,10 @@ public class CreateTemplateHelper extends DriverTestCase {
 		
 		int numberRand=getRandomNumber();	
 		String TemplateName=TName+numberRand;
-		//propertyHelper.writeProperty("TEMPLATENAME", TemplateName);
 		propertyReader.writeProperty("TEMPLATENAME", TemplateName);
 		WaitForElementPresent(CreateTemplateLocators.TemplateName_TextBox, 20);
-		//waitForElementLoad(3);
 		sendKeys(CreateTemplateLocators.TemplateName_TextBox, TemplateName);
 		waitForElementLoad(3);
-		//WaitForElementEnabled(CreateTemplateLocators.CreateApplicationPackageTemplate_SaveButton, 20);
 		clickOn(CreateTemplateLocators.CreateApplicationPackageTemplate_SaveButton);
 		WaitForElementVisible("//div[contains(text(),'SAVING...']", 40);
 		//waitForElementLoad(28);
@@ -94,7 +91,6 @@ public class CreateTemplateHelper extends DriverTestCase {
 	// to validate created template in the result table
 	public void validateCreatedTemplate()
 	{
-		//String templateName=propertyHelper.readProperty("TEMPLATENAME");
 		String templateName=propertyReader.readProperty("TEMPLATENAME");
 		try {
 			
@@ -114,9 +110,7 @@ public class CreateTemplateHelper extends DriverTestCase {
 	public void verifyCreatedTemplateName()
 	{
 		String actualTemplateName=propertyReader.readProperty("TEMPLATENAME");
-		//String actualTemplateName=propertyHelper.readProperty("TEMPLATENAME");
 		String expectedTemplateName=getText("//td[contains(.,'"+actualTemplateName+"')]");
-		//org.testng.Assert.assertEquals(actualTemplateName, expectedTemplateName, "Template Name did not match.");
 		assertEquals(actualTemplateName, expectedTemplateName);
 	}
 }

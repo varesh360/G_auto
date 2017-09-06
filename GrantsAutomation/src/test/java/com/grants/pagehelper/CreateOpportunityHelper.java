@@ -96,7 +96,6 @@ public class CreateOpportunityHelper extends DriverTestCase {
 		// To search the existing template
 		public void enterTemplateNameAndSearch()
 		{
-			//String TemplateName=propertyHelper.readProperty("TEMPLATENAME");
 			String TemplateName=propertyReader.readProperty("TEMPLATENAME");
 			System.out.println(TemplateName);
 			waitForElementLoad(3);
@@ -109,17 +108,17 @@ public class CreateOpportunityHelper extends DriverTestCase {
 		public void selectTemplateFromSearchResultTable()
 		{
 			
-			waitForElementLoad(2);
+			waitForElementLoad(3);
 			clickOn(CreateOpportunityLocators.SelectSearchedTemplate_RadioButton);
 		}
 		
 		// To click select template save button and then Publish button
 		public void clickSaveAndPublishButton()
 		{
-			WaitForElementPresent(CreateOpportunityLocators.PublishPackage_Button, 20);
-			waitForElementLoad(2);
+			WaitForElementVisible(CreateOpportunityLocators.PublishPackage_Button, 20);
+			waitForElementLoad(3);
 			clickOn(CreateOpportunityLocators.SaveTemplateSelection_Button);
-			waitForElementLoad(2);
+			waitForElementLoad(3);
 			clickOn(CreateOpportunityLocators.PublishPackage_Button);
 		}
 		
@@ -134,7 +133,6 @@ public class CreateOpportunityHelper extends DriverTestCase {
 		// To validate_Opportunity_Number_Title_CFDA_Number_CFDA_Title_Competition_ID_Competition_Title
 		public void validteOpportunityNumberTitleCFDANumberCFDATitleCompetitionIDCompetitionTitle()
 		{
-			//String OPPNUMBER=propertyHelper.readProperty("OPPORTUNITYNUMBER");
 			String OPPNUMBER=propertyReader.readProperty("OPPORTUNITYNUMBER");
 			waitForElementLoad(4);
 			Assert.assertTrue("Opportunity number did not match",
@@ -180,13 +178,17 @@ public class CreateOpportunityHelper extends DriverTestCase {
 			else {
 				throw new AssertionError();
 			}
-			/*if( (ApplicantType).contains(getText(CreateOpportunityLocators.PackagePublicationVerificationPage_AvilableTo)))
+			String s=ApplicantType.replaceAll("[\\-\\+\\.\\^:,]","");
+			String ss=s.substring(0, s.length() - 1);
+			if(getText(CreateOpportunityLocators.PackagePublicationVerificationPage_AvilableTo).contains(ss))
 			{
 				System.out.println("Avilable To Match");
 			}
+			
 			else {
+				
 				throw new AssertionError();
-			}*/
+			}
 		}
 		
 		// To again_Click_on_publish_button_to_confirm()

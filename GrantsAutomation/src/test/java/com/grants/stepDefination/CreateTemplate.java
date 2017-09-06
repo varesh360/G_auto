@@ -17,6 +17,7 @@ public class CreateTemplate extends DriverTestCase {
 
 		// Open the application in given browser
 		initateBrowserAndOpenApplication();
+		
 	}
 
 	@Given("^Click on login link button and then click on grantor account$")
